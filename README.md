@@ -1,77 +1,73 @@
-﻿# Modelado Basado en Agentes (ABM): SegregaciÃ³n de Schelling, Modelo de Ising y MCMC
+# Modelado Basado en Agentes (ABM): Segregación de Schelling, Modelo de Ising y MCMC
 
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![UCA](https://img.shields.io/badge/Universidad-UCA-red.svg)](https://uca.edu.ar/)
-
-Este repositorio contiene la implementaciÃ³n computacional, el anÃ¡lisis teÃ³rico y las visualizaciones estocÃ¡sticas correspondientes al **Trabajo PrÃ¡ctico N.Âº 3 de SimulaciÃ³n y Procesos EstocÃ¡sticos** de la Licenciatura en Ciencias de Datos (Pontificia Universidad CatÃ³lica Argentina - UCA, Rosario).
+Este repositorio contiene la implementación computacional, el análisis teórico y las visualizaciones estocásticas correspondientes al **Trabajo Práctico de Simulación y Procesos Estocásticos** de la Licenciatura en Ciencias de Datos (Pontificia Universidad Católica Argentina - UCA, Rosario).
 
 ---
 
-## ðŸ“Œ DescripciÃ³n del Proyecto
+## Descripción del Proyecto
 
-El **Modelado Basado en Agentes (ABM)** desplaza el anÃ¡lisis desde ecuaciones macroscÃ³picas agregadas hacia la definiciÃ³n de reglas de comportamiento microscÃ³picas a nivel individual. En este proyecto se explora cÃ³mo reglas locales simples generan patrones globales complejos (**comportamiento emergente**).
+El **Modelado Basado en Agentes (ABM)** desplaza el análisis desde ecuaciones macroscópicas agregadas hacia la definición de reglas de comportamiento microscópicas a nivel individual. En este proyecto se explora cómo reglas locales simples generan patrones globales complejos (**comportamiento emergente**).
 
-### Ejes de InvestigaciÃ³n
-1. **DinÃ¡micas de InteracciÃ³n Local (Schelling 50x50):** ComparaciÃ³n cuantitativa entre la bÃºsqueda de la minorÃ­a (DinÃ¡mica 1, insatisfacciÃ³n frustrada) y la bÃºsqueda de la mayorÃ­a (DinÃ¡mica 2, segregaciÃ³n espacial).
-2. **AnÃ¡lisis del Estado Frustrado:** DemostraciÃ³n formal de la pÃ©rdida de ergodicidad en Cadenas de Markov y su extrapolaciÃ³n a problemas socioeconÃ³micos reales (Teorema de la TelaraÃ±a en mercados agropecuarios y ruteo dinÃ¡mico de trÃ¡fico urbano).
-3. **DinÃ¡micas de Consenso (Modelo de Ising 2D):** IdentificaciÃ³n de la transiciÃ³n de fase de segundo orden en la temperatura crÃ­tica de Onsager ($T_c \approx 2.269$) y visualizaciÃ³n espacial de los 3 regÃ­menes (Orden/Conformismo, Borde del Caos/Fractal, Anomia/Caos).
-4. **OptimizaciÃ³n EstocÃ¡stica (MCMC & Simulated Annealing):** RestauraciÃ³n de la ergodicidad del sistema mediante el algoritmo de Metropolis-Hastings para alcanzar el mÃ­nimo global de descontento, incluyendo una **optimizaciÃ³n topolÃ³gica $\mathcal{O}(1)$** que reduce la complejidad temporal por iteraciÃ³n de $\mathcal{O}(N)$ a tiempo constante.
+### Ejes de Investigación
+1. **Dinámicas de Interacción Local (Schelling 50x50):** Comparación cuantitativa entre la búsqueda de la minoría (Dinámica 1, insatisfacción frustrada) y la búsqueda de la mayoría (Dinámica 2, segregación espacial).
+2. **Análisis del Estado Frustrado:** Demostración formal de la pérdida de ergodicidad en Cadenas de Markov y su extrapolación a problemas socioeconómicos reales (Teorema de la Telaraña en mercados agropecuarios y ruteo dinámico de tráfico urbano).
+3. **Dinámicas de Consenso (Modelo de Ising 2D):** Identificación de la transición de fase de segundo orden en la temperatura crítica de Onsager ($T_c \approx 2.269$) y visualización espacial de los 3 regímenes (Orden/Conformismo, Borde del Caos/Fractal, Anomia/Caos).
+4. **Optimización Estocástica (MCMC & Simulated Annealing):** Restauración de la ergodicidad del sistema mediante el algoritmo de Metropolis-Hastings para alcanzar el mínimo global de descontento, incluyendo una **optimización topológica $\mathcal{O}(1)$** que reduce la complejidad temporal por iteración de $\mathcal{O}(N)$ a tiempo constante.
 
 ---
 
-## ðŸ“Š Resumen de Resultados
+## Resumen de Resultados
 
-| Modelo | Regla / HeurÃ­stica | Descontento Inicial ($\rho_0$) | Descontento Final ($\rho^*$) | Estado Final |
+| Modelo | Regla / Heurística | Descontento Inicial ($\rho_0$) | Descontento Final ($\rho^*$) | Estado Final |
 | :--- | :--- | :---: | :---: | :--- |
-| **Schelling DinÃ¡mica 1** | MinorÃ­a *greedy* | .36\%$ | .80\%$ | **Frustrado** (MÃ­nimo Local) |
-| **Schelling DinÃ¡mica 2** | MayorÃ­a *greedy* | .64\%$ | .64\%$ | **Segregado** (Equilibrio) |
-| **Ising $T = 1.5$** | MetrÃ³polis ($T < T_c$) | â€” | â€” | **Fase Ordenada** (PolarizaciÃ³n) |
-| **Ising $T \approx 2.269$** | MetrÃ³polis ($T = T_c$) | â€” | â€” | **Fase CrÃ­tica** (Borde del Caos) |
-| **Ising $T = 4.0$** | MetrÃ³polis ($T > T_c$) | â€” | â€” | **Fase Desordenada** (Anomia) |
-| **Schelling MCMC** | MetrÃ³polis + Annealing | .36\%$ | **.24\%$** | **MÃ­nimo Global** (ErgÃ³dico) |
+| **Schelling Dinámica 1** | Minoría *greedy* | $64.36\%$ | $15.80\%$ | **Frustrado** (Mínimo Local) |
+| **Schelling Dinámica 2** | Mayoría *greedy* | $35.64\%$ | $0.64\%$ | **Segregado** (Equilibrio) |
+| **Ising $T = 1.5$** | Metrópolis ($T < T_c$) | — | — | **Fase Ordenada** (Polarización) |
+| **Ising $T \approx 2.269$** | Metrópolis ($T = T_c$) | — | — | **Fase Crítica** (Borde del Caos) |
+| **Ising $T = 4.0$** | Metrópolis ($T > T_c$) | — | — | **Fase Desordenada** (Anomia) |
+| **Schelling MCMC** | Metrópolis + Annealing | $64.36\%$ | **$10.24\%$** | **Mínimo Global** (Ergódico) |
 
 ---
 
-## ðŸ“ Estructura del Repositorio
+## Estructura del Repositorio
 
-`	ext
-â”œâ”€â”€ Trabajo_Practico_N3_Simulacion.ipynb   # Notebook con todo el cÃ³digo ejecutable y anÃ¡lisis
-â”œâ”€â”€ docs/                                  # Informe formal en formato PDF (opcional)
-â”œâ”€â”€ requirements.txt                       # Dependencias del proyecto
-â”œâ”€â”€ .gitignore                             # Archivos ignorados por Git
-â””â”€â”€ README.md                              # DocumentaciÃ³n del proyecto
-`
+```text
+├── Trabajo_Practico_N3_Simulacion.ipynb   # Notebook con todo el código ejecutable y análisis
+├── docs/                                  # Informe formal en formato PDF (opcional)
+├── requirements.txt                       # Dependencias del proyecto
+├── .gitignore                             # Archivos ignorados por Git
+└── README.md                              # Documentación del proyecto
+```
 
 ---
 
-## ðŸš€ InstalaciÃ³n y EjecuciÃ³n
+## Instalación y Ejecución
 
 ### Prerrequisitos
 Tener instalado Python 3.8+ y Jupyter Notebook o JupyterLab.
 
 ### 1. Clonar el Repositorio
-`ash
+```bash
 git clone https://github.com/TU_USUARIO/abm-schelling-ising-mcmc.git
 cd abm-schelling-ising-mcmc
-`
+```
 
 ### 2. Instalar Dependencias
-`ash
+```bash
 pip install -r requirements.txt
-`
+```
 
 ### 3. Abrir y Ejecutar el Notebook
-`ash
-jupyter notebook Trabajo_Practico_N3_Simulacion.ipynb
-`
+```bash
+jupyter notebook Trabajo_Practico_Simulacion.ipynb
+```
 
 ---
 
-## ðŸ‘¨â€ðŸ’» Integrantes del Equipo
+## Integrantes del Equipo
 * **Andrisani, Facundo**
 * **Feser, Ignacio**
 * **Lauria, Francisco**
-* **Viccei, TomÃ¡s**
+* **Viccei, Tomás**
 
-*Licenciatura en Ciencias de Datos â€” Pontificia Universidad CatÃ³lica Argentina (UCA Rosario)*
+*Licenciatura en Ciencias de Datos — Pontificia Universidad Católica Argentina (UCA Rosario)*
