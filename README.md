@@ -32,37 +32,13 @@ El **Modelado Basado en Agentes (ABM)** desplaza el análisis desde ecuaciones m
 ## Estructura del Repositorio
 
 ```text
-├── Trabajo_Practico_N3_Simulacion.ipynb   # Notebook con todo el código ejecutable y análisis
+├── automata-celular-mcmc.ipynb   # Notebook con todo el código ejecutable y análisis
 ├── docs/                                  # Informe formal en formato PDF (opcional)
 ├── requirements.txt                       # Dependencias del proyecto
 ├── .gitignore                             # Archivos ignorados por Git
 └── README.md                              # Documentación del proyecto
 ```
 
----
-
-## Instalación y Ejecución
-
-### Prerrequisitos
-Tener instalado Python 3.8+ y Jupyter Notebook o JupyterLab.
-
-### 1. Clonar el Repositorio
-```bash
-git clone https://github.com/TU_USUARIO/abm-schelling-ising-mcmc.git
-cd abm-schelling-ising-mcmc
-```
-
-### 2. Instalar Dependencias
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Abrir y Ejecutar el Notebook
-```bash
-jupyter notebook Trabajo_Practico_Simulacion.ipynb
-```
-
----
 
 ## Integrantes del Equipo
 * **Andrisani, Facundo**
